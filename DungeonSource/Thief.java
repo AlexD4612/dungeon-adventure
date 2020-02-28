@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 
 /**
  * Title:
@@ -26,8 +26,8 @@ public class Thief extends Hero
 		if (surprise <= .4)
 		{
 			System.out.println("Surprise attack was successful!\n" +
-								name + " gets an additional turn.");
-			numTurns++;
+								getName() + " gets an additional turn.");
+			setNumTurns(getNumTurns()+1);
 			attack(opponent);
 		}//end surprise
 		else if (surprise >= .9)
@@ -46,6 +46,7 @@ public class Thief extends Hero
 	{
 		super.battleChoices(opponent);
 		int choice;
+		Scanner kb = new Scanner(System.in);
 
 
 		do
@@ -53,7 +54,7 @@ public class Thief extends Hero
 		    System.out.println("1. Attack Opponent");
 		    System.out.println("2. Surprise Attack");
 		    System.out.print("Choose an option: ");
-		    choice = Keyboard.readInt();
+		    choice = kb.nextInt();
 
 		    switch (choice)
 		    {
@@ -65,11 +66,11 @@ public class Thief extends Hero
 			        System.out.println("invalid choice!");
 		    }//end switch
 
-			numTurns--;
-			if (numTurns > 0)
-			    System.out.println("Number of turns remaining is: " + numTurns);
+			setNumTurns(getNumTurns()-1);
+			if (getNumTurns() > 0)
+			    System.out.println("Number of turns remaining is: " + getNumTurns());
 
-		} while(numTurns > 0);
+		} while(getNumTurns() > 0);
 
     }
 }

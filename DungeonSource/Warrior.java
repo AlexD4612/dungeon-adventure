@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 
 /**
  * Title:
@@ -29,13 +29,13 @@ public class Warrior extends Hero
 		if (Math.random() <= .4)
 		{
 			int blowPoints = (int)(Math.random() * 76) + 100;
-			System.out.println(name + " lands a CRUSHING BLOW for " + blowPoints
+			System.out.println(getName() + " lands a CRUSHING BLOW for " + blowPoints
 								+ " damage!");
 			opponent.subtractHitPoints(blowPoints);
 		}//end blow succeeded
 		else
 		{
-			System.out.println(name + " failed to land a crushing blow");
+			System.out.println(getName() + " failed to land a crushing blow");
 			System.out.println();
 		}//blow failed
 
@@ -43,7 +43,7 @@ public class Warrior extends Hero
 
 	public void attack(DungeonCharacter opponent)
 	{
-		System.out.println(name + " swings a mighty sword at " +
+		System.out.println(getName() + " swings a mighty sword at " +
 							opponent.getName() + ":");
 		super.attack(opponent);
 	}//end override of attack method
@@ -56,13 +56,13 @@ public class Warrior extends Hero
 		int choice;
 
 		super.battleChoices(opponent);
-
+		Scanner kb = new Scanner(System.in);
 		do
 		{
 		    System.out.println("1. Attack Opponent");
 		    System.out.println("2. Crushing Blow on Opponent");
 		    System.out.print("Choose an option: ");
-		    choice = Keyboard.readInt();
+		    choice = kb.nextInt();
 
 		    switch (choice)
 		    {
@@ -74,11 +74,11 @@ public class Warrior extends Hero
 			        System.out.println("invalid choice!");
 		    }//end switch
 
-			numTurns--;
-			if (numTurns > 0)
-			    System.out.println("Number of turns remaining is: " + numTurns);
+			setNumTurns(getNumTurns()-1);
+			if (getNumTurns() > 0)
+			    System.out.println("Number of turns remaining is: " + getNumTurns());
 
-		} while(numTurns > 0);
+		} while(getNumTurns() > 0);
 
     }//end battleChoices method
 
