@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 
 /**
  * Title: Hero.java
@@ -30,15 +30,12 @@
 
 public abstract class Hero extends DungeonCharacter
 {
-	protected double chanceToBlock;
-	protected int numTurns;
+	private double chanceToBlock;
+	private int numTurns;
 
 //-----------------------------------------------------------------
 //calls base constructor and gets name of hero from user
-  public Hero(String name, int hitPoints, int attackSpeed,
-				     double chanceToHit, int damageMin, int damageMax,
-					 double chanceToBlock)
-  {
+  public Hero(String name, int hitPoints, int attackSpeed, double chanceToHit, int damageMin, int damageMax, double chanceToBlock) {
 	super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
 	this.chanceToBlock = chanceToBlock;
 	readName();
@@ -53,11 +50,68 @@ Returns: nothing
 This method calls: nothing
 This method is called by: hero constructor
 ---------------------------------------------------------*/
-  public void readName()
-  {
+  public void readName() {
+	  Scanner kb = new Scanner(System.in);
 		System.out.print("Enter character name: ");
-		name = Keyboard.readString();
+		setName(kb.next());
   }//end readName method
+/*--------------------------------------------
+ getChancetoBlock is a getter method for the private field chanceToBlock
+ 
+  Recieves:nothing
+  Returns: chanceToBlock
+  
+  this method calls: nothing
+  this method is called by: hero subclasses
+  
+ ---------------------------------------------*/
+public double getChanceToBlock() {
+	return chanceToBlock;
+}
+/*-------------------------------------------------
+ setChanceToBlock is a setter method for the private field chanceToBlock
+ 
+ Receives: double
+ Returns: nothing
+ 
+ this method calls: nothing
+ this method is called by: hero subclasses
+ 
+ *--------------------------------------------------*/
+
+
+public void setChanceToBlock(double chanceToBlock) {
+	this.chanceToBlock = chanceToBlock;
+}// end setChanceToBlock
+
+/*--------------------------------------------
+getNumTurns is a getter method for the private field numTurns
+
+ Recieves:nothing
+ Returns: numTurns
+ 
+ this method calls: nothing
+ this method is called by: hero subclasses
+ 
+---------------------------------------------*/
+
+public int getNumTurns() {
+	return numTurns;
+} // end getNumTurns
+
+/*-------------------------------------------------
+setNumTurns is a setter method for the private field numTurns
+Receives: int
+Returns: nothing
+
+this method calls: nothing
+this method is called by: hero subclasses
+
+*--------------------------------------------------*/
+
+public void setNumTurns(int numTurns) {
+	this.numTurns = numTurns;
+} // end setNumTurns
 
 /*-------------------------------------------------------
 defend determines if hero blocks attack
@@ -90,7 +144,7 @@ public void subtractHitPoints(int hitPoints)
 	{
 		if (defend())
 		{
-			System.out.println(name + " BLOCKED the attack!");
+			System.out.println(getName() + " BLOCKED the attack!");
 		}
 		else
 		{
@@ -114,10 +168,10 @@ This method is called by: external sources
 ---------------------------------------------------------*/
 	public void battleChoices(DungeonCharacter opponent)
 	{
-	    numTurns = attackSpeed/opponent.getAttackSpeed();
+	    setNumTurns(getAttackSpeed()/opponent.getAttackSpeed());
 
-		if (numTurns == 0)
-			numTurns++;
+		if (getNumTurns() == 0)
+			setNumTurns(getNumTurns()+1);
 
 		System.out.println("Number of turns this round is: " + numTurns);
 
