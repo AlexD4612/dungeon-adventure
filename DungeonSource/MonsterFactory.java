@@ -11,7 +11,7 @@ public class MonsterFactory {
 			case 3:
 				return new Skeleton();
 				break;
-			case default:
+			default:
 				return new Skeleton();
 				break;
 		}
