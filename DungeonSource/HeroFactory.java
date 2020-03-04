@@ -11,7 +11,7 @@ public class HeorFactory {
 			case 3:
 				return new Warrior();
 				break;
-			case default:
+			default:
 				return new Warrior();
 				break;
 		}
