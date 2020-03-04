@@ -3,14 +3,16 @@ public class HeroFactory {
 	public HeroFactory() {}
 	
 	public Hero createHero(int heroNum) {
-		switch(heroNum) {
-			case 1:
+		if (heroNum == 1) {
 				return new Warrior();
-			case 2:
+		}
+		else if (herNum == 2) {
 				return new Sorceress();
-			case 3:
+		}
+		else if (heroNum == 3) {
 				return new Thief();
-			default:
+		}
+		else {
 				return new Warrior();
 		}
 	}
