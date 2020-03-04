@@ -1,19 +1,17 @@
-public class HeorFactory {
+public class HeroFactory {
+	
+	public HeroFactory() {}
 	
 	public Hero createHero(int heroNum) {
 		switch(heroNum) {
 			case 1:
-				return new Sorceress();
-				break;
-			case 2:
-				return new Thief();
-				break;
-			case 3:
 				return new Warrior();
-				break;
+			case 2:
+				return new Sorceress();
+			case 3:
+				return new Thief();
 			case default:
 				return new Warrior();
-				break;
 		}
 	}
 }
