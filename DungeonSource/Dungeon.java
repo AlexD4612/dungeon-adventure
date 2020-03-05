@@ -47,53 +47,23 @@ public class Dungeon
 {
     public static void main(String[] args)
 	{
-
-		Hero theHero;
-		Monster theMonster;
+    	System.out.println("Choose a hero:\n" +
+			       "1. Warrior\n" +
+				   "2. Sorceress\n" +
+				   "3. Thief");
+    	Scanner kb = new Scanner(System.in);
+    	int random = (int)(Math.random() * 3) + 1;
 
 		do
 		{
-		    theHero = chooseHero();
-		    theMonster = generateMonster();
+		    Hero theHero = new HeroFactory().createHero(kb.nextInt());
+		    Monster theMonster =  new MonsterFactory().createMonster(random);
 			battle(theHero, theMonster);
 
 		} while (playAgain());
+		kb.close()
 
-    }
-
-    /*-------------------------------------------------------------------
-    chooseHero allows the user to select a hero, creates that hero, and
-    returns it.  It utilizes a Simple Factory to generate heroes
-    ---------------------------------------------------------------------*/
-    	public static Hero chooseHero()
-    	{
-    		HeroFactory heroFactory = new HeroFactory();
-    		int choice;
-    		Scanner kb = new Scanner(System.in);
-
-    		System.out.println("Choose a hero:\n" +
-    					       "1. Warrior\n" +
-    						   "2. Sorceress\n" +
-    						   "3. Thief");
-    		choice = kb.nextInt();
-    		
-    		return heroFactory.createHero(choice);
-    		
-    	}
-
-    /*-------------------------------------------------------------------
-    generateMonster randomly selects a Monster and returns it.  It utilizes
-    a Simple Factory in order to generate monsters
-    ---------------------------------------------------------------------*/
-    	public static Monster generateMonster()
-    	{
-    		MonsterFactory monsterFactory = new MonsterFactory();
-    		int choice;
-    		
-    		choice = (int)(Math.random() * 3) + 1;
-    		return monsterFactory.createMonster(choice);
-    	}
-
+   
 /*-------------------------------------------------------------------
 playAgain allows gets choice from user to play another game.  It returns
 true if the user chooses to continue, false otherwise.
@@ -105,7 +75,7 @@ true if the user chooses to continue, false otherwise.
 
 		System.out.println("Play again (y/n)?");
 		again = kb.next();
-
+		kb.close();
 		return (again.equals("Y") || again.equals("y"));
 	}
 
@@ -124,16 +94,17 @@ user has the option of quitting.
 							theMonster.getName());
 		System.out.println("---------------------------------------------");
 
+
 		while (theHero.isAlive() && theMonster.isAlive() && !pause.equals("q"))
 		{
-		    //hero goes first
+		 
 			theHero.battleChoices(theMonster);
 
-			//monster's turn (provided it's still alive!)
+			
 			if (theMonster.isAlive())
 			    theMonster.attack(theHero);
 
-			//let the player bail out if desired
+	
 			System.out.print("\n-->q to quit, anything else to continue: ");
 			pause = kb.next();
 
@@ -143,7 +114,7 @@ user has the option of quitting.
 		    System.out.println(theHero.getName() + " was victorious!");
 		else if (!theHero.isAlive())
 			System.out.println(theHero.getName() + " was defeated :-(");
-		else//both are alive so user quit the game
+		else
 			System.out.println("Quitters never win ;-)");
 
 	}
