@@ -45,17 +45,17 @@ import java.util.Scanner;
 */
 public class Dungeon
 {
+	private static Scanner kb = new Scanner(System.in);
+	
     public static void main(String[] args)
 	{
-    	System.out.println("Choose a hero:\n" +
-			       "1. Warrior\n" +
-				   "2. Sorceress\n" +
-				   "3. Thief");
-    	Scanner kb = new Scanner(System.in);
-    	int random = (int)(Math.random() * 3) + 1;
-
 		do
 		{
+			System.out.println("Choose a hero:\n" +
+				       "1. Warrior\n" +
+					   "2. Sorceress\n" +
+					   "3. Thief");
+			int random = (int)(Math.random() * 3) + 1;
 		    Hero theHero = new HeroFactory().createHero(kb.nextInt());
 		    Monster theMonster =  new MonsterFactory().createMonster(random);
 			battle(theHero, theMonster);
@@ -63,6 +63,7 @@ public class Dungeon
 		} while (playAgain());
 		kb.close();
 	}
+
    
 /*-------------------------------------------------------------------
 playAgain allows gets choice from user to play another game.  It returns
@@ -71,11 +72,9 @@ true if the user chooses to continue, false otherwise.
 	public static boolean playAgain()
 	{
 		String again;
-		Scanner kb = new Scanner(System.in);
 
 		System.out.println("Play again (y/n)?");
 		again = kb.next();
-		kb.close();
 		return (again.equals("Y") || again.equals("y"));
 	}
 
@@ -89,7 +88,6 @@ user has the option of quitting.
 	public static void battle(Hero theHero, Monster theMonster)
 	{
 		String pause = "p";
-		Scanner kb = new Scanner(System.in);
 		System.out.println(theHero.getName() + " battles " +
 							theMonster.getName());
 		System.out.println("---------------------------------------------");
