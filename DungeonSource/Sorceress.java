@@ -16,15 +16,14 @@ public class Sorceress extends Hero
 	public final int MIN_ADD = 25;
 	public final int MAX_ADD = 50;
 
-//-----------------------------------------------------------------
+
     public Sorceress()
 	{
 		super("Sorceress", 75, 5, .7, 25, 50, .3);
 
 
-    }//end constructor
+    }
 
-//-----------------------------------------------------------------
 	public void increaseHitPoints()
     {
 	    int hPoints;
@@ -36,17 +35,16 @@ public class Sorceress extends Hero
 							+ getHitPoints());
 		 System.out.println();
 
-    }//end increaseHitPoints method
+    }
 
-//-----------------------------------------------------------------
 	public void attack(DungeonCharacter opponent)
 	{
 		System.out.println(getName() + " casts a spell of fireball at " +
 							opponent.getName() + ":");
 		super.attack(opponent);
-	}//end override of attack method
+	}
 
-//-----------------------------------------------------------------
+
     public void battleChoices(DungeonCharacter opponent)
 	{
 		super.battleChoices(opponent);
@@ -68,7 +66,7 @@ public class Sorceress extends Hero
 			        break;
 			    default:
 			        System.out.println("invalid choice!");
-		    }//end switch
+		    }
 
 			setNumTurns(getNumTurns()-1);
 		    if (getNumTurns()> 0)
@@ -76,6 +74,6 @@ public class Sorceress extends Hero
 
 		} while(getNumTurns() > 0 && getHitPoints() > 0 && opponent.getHitPoints() > 0);
 
-    }//end overridden method
+    }
 
-}//end class
+}

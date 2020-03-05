@@ -42,7 +42,6 @@ import java.util.Scanner;
   3.  Allow the hero to battle the monster
 
   Once a battle concludes, the user has the option of repeating the above
-
 */
 public class Dungeon
 {
@@ -62,9 +61,7 @@ public class Dungeon
 			battle(theHero, theMonster);
 
 		} while (playAgain());
-		kb.close();
-
-    }
+		kb.close()
 
    
 /*-------------------------------------------------------------------
@@ -97,7 +94,7 @@ user has the option of quitting.
 							theMonster.getName());
 		System.out.println("---------------------------------------------");
 
-		
+
 		while (theHero.isAlive() && theMonster.isAlive() && !pause.equals("q"))
 		{
 		 
@@ -121,6 +118,5 @@ user has the option of quitting.
 			System.out.println("Quitters never win ;-)");
 
 	}
-
 
 }

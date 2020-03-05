@@ -16,7 +16,7 @@ public class Skeleton extends Monster
 	{
 		super("Sargath the Skeleton", 100, 3, .8, .3, 30, 50, 30, 50);
 
-    }//end constructor
+    }
 
 	public void attack(DungeonCharacter opponent)
 	{
@@ -24,7 +24,7 @@ public class Skeleton extends Monster
 							opponent.getName() + ":");
 		super.attack(opponent);
 
-	}//end override of attack
+	}
 
 
-}//end class Skeleton
+}
