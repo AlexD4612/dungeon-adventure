@@ -61,7 +61,8 @@ public class Dungeon
 			battle(theHero, theMonster);
 
 		} while (playAgain());
-		kb.close()
+		kb.close();
+	}
 
    
 /*-------------------------------------------------------------------
