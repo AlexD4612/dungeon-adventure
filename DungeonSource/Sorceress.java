@@ -58,16 +58,17 @@ public class Sorceress extends Hero
 		    System.out.print("Choose an option: ");
 		    choice = kb.nextInt();
 
-		    switch (choice)
-		    {
-			    case 1: attack(opponent);
-			        break;
-			    case 2: increaseHitPoints();
-			        break;
-			    default:
-			        System.out.println("invalid choice!");
+		    
+		    if(choice == 1) {
+		    	attack(opponent);
 		    }
-
+		    else if (choice == 2 ) {
+		    	increaseHitPoints();
+		    }
+		    else {
+		    	System.out.println("invalid choice!");
+		    }
+		   
 			setNumTurns(getNumTurns()-1);
 		    if (getNumTurns()> 0)
 			    System.out.println("Number of turns remaining is: " + getNumTurns());
