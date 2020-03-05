@@ -61,8 +61,8 @@ public class Dungeon
 			battle(theHero, theMonster);
 
 		} while (playAgain());
-		kb.close()
-
+		kb.close();
+	}
    
 /*-------------------------------------------------------------------
 playAgain allows gets choice from user to play another game.  It returns
@@ -107,7 +107,7 @@ user has the option of quitting.
 	
 			System.out.print("\n-->q to quit, anything else to continue: ");
 			pause = kb.next();
-
+			
 		}
 
 		if (!theMonster.isAlive())
