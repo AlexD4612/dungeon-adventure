@@ -32,7 +32,7 @@
  * @version 1.0
  */
 
-public abstract class DungeonCharacter implements Comparable<DungeonCharacter>
+public abstract class DungeonCharacter implements Attack
 {
 
 	private String name;
@@ -45,54 +45,54 @@ public abstract class DungeonCharacter implements Comparable<DungeonCharacter>
  ----------------------*/
 	public double getChanceToHit() {
 		return chanceToHit;
-	} //end getChanceToHit
+	} 
 
 	public void setChanceToHit(double chanceToHit) {
 		this.chanceToHit = chanceToHit;
-	}// end setChancetoHit
+	}
 
 	public int getDamageMin() {
 		return damageMin;
-	}//end getDamageMin
+	}
 
 	public void setDamageMin(int damageMin) {
 		this.damageMin = damageMin;
-	} //end setDamageMin
+	} 
 
 	public int getDamageMax() {
 		return damageMax;
-	} // end getDamageMax
+	} 
 
 	public void setDamageMax(int damageMax) {
 		this.damageMax = damageMax;
-	} //end setDamageMax
+	} 
 
 	public void setName(String name) {
 		this.name = name;
-	} //end setName
+	} 
 
 	public void setHitPoints(int hitPoints) {
 		this.hitPoints = hitPoints;
-	}//end setHitPoints
+	}
 
 	public void setAttackSpeed(int attackSpeed) {
 		this.attackSpeed = attackSpeed;
-	} //end setAttackSpeed
+	} 
 
 	public String getName()
 	{
 		return name;
-	}//end getName
+	}
 	
 	public int getHitPoints()
 	{
 		return hitPoints;
-	}//end getHitPoints
+	}
 	
 	public int getAttackSpeed()
 	{
 		return attackSpeed;
-	}//end getAttackSpeed
+	}
 	
 	/*explicit constructor to initialize instance variables -- it is called
 	 by derived classes*/
@@ -107,7 +107,7 @@ public abstract class DungeonCharacter implements Comparable<DungeonCharacter>
 			this.damageMin = damageMin;
 			this.damageMax = damageMax;
 
-		}//end constructor
+		}
 
 /*-------------------------------------------------------
 addHitPoints is used to increment the hitpoints a dungeon character has
@@ -128,7 +128,7 @@ This method is called by: heal method of monsters and Sorceress
 			//System.out.println("Remaining Hit Points: " + hitPoints);
 
 		}
-	}//end addHitPoints method
+	}
 
 /*-------------------------------------------------------
 subtractHitPoints is used to decrement the hitpoints a dungeon character has.
@@ -155,13 +155,13 @@ This method is called by: overridden versions in Hero and Monster
 			System.out.println(getName() + " now has " +
 								getHitPoints() + " hit points remaining.");
 			System.out.println();
-		}//end else if
+		}
 
 		if (this.hitPoints == 0)
 			System.out.println(name + " has been killed :-(");
 
 
-	}//end method
+	}
 
 /*-------------------------------------------------------
 isAlive is used to see if a character is still alive by checking hit points
@@ -175,7 +175,7 @@ This method is called by: unknown (intended for external use)
     public boolean isAlive()
 	{
 	  return (hitPoints > 0);
-	}//end isAlive method
+	}
 
 /*-------------------------------------------------------
 attack allows character to attempt attack on opponent.  First, chance to hit
@@ -205,24 +205,15 @@ hero classes and externally
 
 
 			System.out.println();
-		}//end if can attack
+		}
 		else
 		{
 
 			System.out.println(getName() + "'s attack on " + opponent.getName() +
 								" failed!");
 			System.out.println();
-		}//end else
+		}
 
-	}//end attack method
-     @Override
-	public int compareTo(DungeonCharacter arg0) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
-//-----------------------------------------------------------------
-
-
-
-}//end class Character
+}

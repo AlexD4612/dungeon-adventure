@@ -33,7 +33,6 @@ import java.util.Scanner;
  */
 
 
-
 /*
   This class is the driver file for the Heroes and Monsters project.  It will
   do the following:
@@ -43,7 +42,6 @@ import java.util.Scanner;
   3.  Allow the hero to battle the monster
 
   Once a battle concludes, the user has the option of repeating the above
-
 */
 public class Dungeon
 {
@@ -61,7 +59,7 @@ public class Dungeon
 
 		} while (playAgain());
 
-    }//end main method
+    }
 
     /*-------------------------------------------------------------------
     chooseHero allows the user to select a hero, creates that hero, and
@@ -81,7 +79,7 @@ public class Dungeon
     		
     		return heroFactory.createHero(choice);
     		
-    	}//end chooseHero method
+    	}
 
     /*-------------------------------------------------------------------
     generateMonster randomly selects a Monster and returns it.  It utilizes
@@ -94,7 +92,7 @@ public class Dungeon
     		
     		choice = (int)(Math.random() * 3) + 1;
     		return monsterFactory.createMonster(choice);
-    	}//end generateMonster method
+    	}
 
 /*-------------------------------------------------------------------
 playAgain allows gets choice from user to play another game.  It returns
@@ -109,7 +107,7 @@ true if the user chooses to continue, false otherwise.
 		again = kb.next();
 
 		return (again.equals("Y") || again.equals("y"));
-	}//end playAgain method
+	}
 
 
 /*-------------------------------------------------------------------
@@ -126,7 +124,6 @@ user has the option of quitting.
 							theMonster.getName());
 		System.out.println("---------------------------------------------");
 
-		//do battle
 		while (theHero.isAlive() && theMonster.isAlive() && !pause.equals("q"))
 		{
 		    //hero goes first
@@ -140,7 +137,7 @@ user has the option of quitting.
 			System.out.print("\n-->q to quit, anything else to continue: ");
 			pause = kb.next();
 
-		}//end battle loop
+		}
 
 		if (!theMonster.isAlive())
 		    System.out.println(theHero.getName() + " was victorious!");
@@ -149,7 +146,6 @@ user has the option of quitting.
 		else//both are alive so user quit the game
 			System.out.println("Quitters never win ;-)");
 
-	}//end battle method
+	}
 
-
-}//end Dungeon class
+}

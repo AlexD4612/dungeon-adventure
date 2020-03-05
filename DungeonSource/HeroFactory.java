@@ -6,7 +6,7 @@ public class HeroFactory {
 		if (heroNum == 1) {
 				return new Warrior();
 		}
-		else if (herNum == 2) {
+		else if (heroNum == 2) {
 				return new Sorceress();
 		}
 		else if (heroNum == 3) {

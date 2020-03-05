@@ -54,7 +54,7 @@ This method is called by: hero constructor
 	  Scanner kb = new Scanner(System.in);
 		System.out.print("Enter character name: ");
 		setName(kb.next());
-  }//end readName method
+  }
 /*--------------------------------------------
  getChancetoBlock is a getter method for the private field chanceToBlock
  
@@ -82,7 +82,7 @@ public double getChanceToBlock() {
 
 public void setChanceToBlock(double chanceToBlock) {
 	this.chanceToBlock = chanceToBlock;
-}// end setChanceToBlock
+}
 
 /*--------------------------------------------
 getNumTurns is a getter method for the private field numTurns
@@ -97,7 +97,7 @@ getNumTurns is a getter method for the private field numTurns
 
 public int getNumTurns() {
 	return numTurns;
-} // end getNumTurns
+} 
 
 /*-------------------------------------------------
 setNumTurns is a setter method for the private field numTurns
@@ -111,7 +111,7 @@ this method is called by: hero subclasses
 
 public void setNumTurns(int numTurns) {
 	this.numTurns = numTurns;
-} // end setNumTurns
+} 
 
 /*-------------------------------------------------------
 defend determines if hero blocks attack
@@ -126,7 +126,7 @@ This method is called by: subtractHitPoints()
   {
 		return Math.random() <= chanceToBlock;
 
-  }//end defend method
+  }
 
 /*-------------------------------------------------------
 subtractHitPoints checks to see if hero blocked attack, if so a message
@@ -151,8 +151,7 @@ public void subtractHitPoints(int hitPoints)
 			super.subtractHitPoints(hitPoints);
 		}
 
-
-	}//end method
+	}
 
 /*-------------------------------------------------------
 battleChoices will be overridden in derived classes.  It computes the
@@ -175,6 +174,6 @@ This method is called by: external sources
 
 		System.out.println("Number of turns this round is: " + numTurns);
 
-	}//end battleChoices
+	}
 
-}//end Hero class
+}
