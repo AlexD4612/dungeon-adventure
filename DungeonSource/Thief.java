@@ -16,7 +16,14 @@ public class Thief extends Hero
 	{
 		super("Thief", 75, 6, .8, 20, 40, .5);
     }
-
+    
+    public void attack(DungeonCharacter opponent)
+	{
+		System.out.println(getName() + " back stabs " +
+							opponent.getName() + ":");
+		super.attack(opponent);
+	}
+    
 	@Override
 	public void specialAttack(DungeonCharacter opponent)
 	{	
