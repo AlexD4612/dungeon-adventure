@@ -165,7 +165,7 @@ should be performed.
 
 protected abstract String getSpecialAttack();
 
-public final void battleChoices(DungeonCharacter opponent)
+public void battleChoices(DungeonCharacter opponent)
 {
 	int choice;
 	Scanner kb = new Scanner(System.in);
