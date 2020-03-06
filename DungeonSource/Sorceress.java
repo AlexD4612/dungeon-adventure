@@ -25,45 +25,13 @@ public class Sorceress extends Hero
     }
 
 
+
 	public void attack(DungeonCharacter opponent)
 	{
 		System.out.println(getName() + " casts a spell of fireball at " +
 							opponent.getName() + ":");
 		super.attack(opponent);
 	}
-
-
-    public void battleChoices(DungeonCharacter opponent)
-	{
-		super.battleChoices(opponent);
-		int choice;
-		Scanner kb = new Scanner(System.in);
-
-		do
-		{
-		    System.out.println("1. Attack Opponent");
-		    System.out.println("2. Increase Hit Points");
-		    System.out.print("Choose an option: ");
-		    choice = kb.nextInt();
-		    
-		    if(choice == 1) {
-		    	attack(opponent);
-
-		    }
-		    else if (choice == 2 ) {
-		    	increaseHitPoints();
-		    }
-		    else {
-		    	System.out.println("invalid choice!");
-		    }
-		   
-			setNumTurns(getNumTurns()-1);
-		    if (getNumTurns()> 0)
-			    System.out.println("Number of turns remaining is: " + getNumTurns());
-
-		} while(getNumTurns() > 0 && getHitPoints() > 0 && opponent.getHitPoints() > 0);
-
-    }
 
 	@Override
 	public void specialAttack(DungeonCharacter opponent)
@@ -79,4 +47,9 @@ public class Sorceress extends Hero
 		
 	}
 
+
+	@Override
+	protected String getSpecialAttack() {
+		return "Increase Hitpoints";
+	}
 }
