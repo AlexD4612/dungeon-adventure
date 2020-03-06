@@ -9,4 +9,4 @@ Heroes and Monsters refactoring and Dungeon Adventure final project
 * (5) Deleted Comparable interface
 * (6) Deleted unneeded comments
 * (7) Changed switch statements to if/else conditionals
-* (8)
+* (8) Added a Template method in Hero.java (battleChoices)
