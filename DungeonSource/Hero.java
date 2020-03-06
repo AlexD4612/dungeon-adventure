@@ -156,7 +156,7 @@ public void subtractHitPoints(int hitPoints)
 /*-------------------------------------------------------
 battleChoices is a Template method that delegates to
 subclasses about what attacks they should do. getSpecialAttack()
-return the name of the special attack. attack(opponent) 
+returns the name of the special attack. attack(opponent) 
 prints out the attack then asks the super class for
 calculations. specialAttack(opponent) delegates to 
 subclasses what the special attack is and how it
