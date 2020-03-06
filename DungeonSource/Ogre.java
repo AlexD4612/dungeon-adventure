@@ -27,5 +27,11 @@ public class Ogre extends Monster
 
 	}
 
+	@Override
+	public void specialAttack(DungeonCharacter opponent) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
