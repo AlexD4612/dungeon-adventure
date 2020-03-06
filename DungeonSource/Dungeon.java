@@ -105,7 +105,7 @@ user has the option of quitting.
 	
 			System.out.print("\n-->q to quit, anything else to continue: ");
 			pause = kb.next();
-
+			
 		}
 
 		if (!theMonster.isAlive())
