@@ -156,7 +156,7 @@ public void subtractHitPoints(int hitPoints)
 /*-------------------------------------------------------
 battleChoices is a Template method that delegates to
 subclasses about what attacks they should do. getSpecialAttack()
-return the name of the special attack. attack(opponent) 
+returns the name of the special attack. attack(opponent) 
 prints out the attack then asks the super class for
 calculations. specialAttack(opponent) delegates to 
 subclasses what the special attack is and how it
@@ -165,34 +165,41 @@ should be performed.
 
 protected abstract String getSpecialAttack();
 
-public void battleChoices(DungeonCharacter opponent)
-{
-	int choice;
-	Scanner kb = new Scanner(System.in);
-
-	do
+public final void battleChoices(DungeonCharacter opponent)
 	{
-	    System.out.println("1. Attack Opponent");
-	    System.out.println("2. " + getSpecialAttack());
-	    System.out.print("Choose an option: ");
-	    choice = kb.nextInt();
-	    
-	    if(choice == 1) {
-	    	attack(opponent);
-
-	    }
-	    else if (choice == 2 ) {
-	    	specialAttack(opponent);
-	    }
-	    else {
-	    	System.out.println("invalid choice!");
-	    }
-	   
-		setNumTurns(getNumTurns()-1);
-	    if (getNumTurns()> 0)
-		    System.out.println("Number of turns remaining is: " + getNumTurns());
-
-	} while(getNumTurns() > 0 && getHitPoints() > 0 && opponent.getHitPoints() > 0);
-
-}
+		 numTurns = getAttackSpeed()/opponent.getAttackSpeed();
+	
+			if (numTurns == 0)
+				numTurns++;
+	
+			System.out.println("Number of turns this round is: " + numTurns);
+		
+		int choice;
+		Scanner kb = new Scanner(System.in);
+	
+		do
+		{
+		    System.out.println("1. Attack Opponent");
+		    System.out.println("2. " + getSpecialAttack());
+		    System.out.print("Choose an option: ");
+		    choice = kb.nextInt();
+		    
+		    if(choice == 1) {
+		    	attack(opponent);
+	
+		    }
+		    else if (choice == 2 ) {
+		    	specialAttack(opponent);
+		    }
+		    else {
+		    	System.out.println("invalid choice!");
+		    }
+		   
+			setNumTurns(getNumTurns()-1);
+		    if (getNumTurns()> 0)
+			    System.out.println("Number of turns remaining is: " + getNumTurns());
+	
+		} while(getNumTurns() > 0 && getHitPoints() > 0 && opponent.getHitPoints() > 0);
+	
+	}
 }
