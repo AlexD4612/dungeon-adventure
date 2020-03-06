@@ -166,40 +166,40 @@ should be performed.
 protected abstract String getSpecialAttack();
 
 public final void battleChoices(DungeonCharacter opponent)
-{
-	 numTurns = getAttackSpeed()/opponent.getAttackSpeed();
-
-		if (numTurns == 0)
-			numTurns++;
-
-		System.out.println("Number of turns this round is: " + numTurns);
-	
-	int choice;
-	Scanner kb = new Scanner(System.in);
-
-	do
 	{
-	    System.out.println("1. Attack Opponent");
-	    System.out.println("2. " + getSpecialAttack());
-	    System.out.print("Choose an option: ");
-	    choice = kb.nextInt();
-	    
-	    if(choice == 1) {
-	    	attack(opponent);
-
-	    }
-	    else if (choice == 2 ) {
-	    	specialAttack(opponent);
-	    }
-	    else {
-	    	System.out.println("invalid choice!");
-	    }
-	   
-		setNumTurns(getNumTurns()-1);
-	    if (getNumTurns()> 0)
-		    System.out.println("Number of turns remaining is: " + getNumTurns());
-
-	} while(getNumTurns() > 0 && getHitPoints() > 0 && opponent.getHitPoints() > 0);
-
-}
+		 numTurns = getAttackSpeed()/opponent.getAttackSpeed();
+	
+			if (numTurns == 0)
+				numTurns++;
+	
+			System.out.println("Number of turns this round is: " + numTurns);
+		
+		int choice;
+		Scanner kb = new Scanner(System.in);
+	
+		do
+		{
+		    System.out.println("1. Attack Opponent");
+		    System.out.println("2. " + getSpecialAttack());
+		    System.out.print("Choose an option: ");
+		    choice = kb.nextInt();
+		    
+		    if(choice == 1) {
+		    	attack(opponent);
+	
+		    }
+		    else if (choice == 2 ) {
+		    	specialAttack(opponent);
+		    }
+		    else {
+		    	System.out.println("invalid choice!");
+		    }
+		   
+			setNumTurns(getNumTurns()-1);
+		    if (getNumTurns()> 0)
+			    System.out.println("Number of turns remaining is: " + getNumTurns());
+	
+		} while(getNumTurns() > 0 && getHitPoints() > 0 && opponent.getHitPoints() > 0);
+	
+	}
 }
