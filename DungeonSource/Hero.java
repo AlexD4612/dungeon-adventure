@@ -167,6 +167,13 @@ protected abstract String getSpecialAttack();
 
 public void battleChoices(DungeonCharacter opponent)
 {
+	 numTurns = getAttackSpeed()/opponent.getAttackSpeed();
+
+		if (numTurns == 0)
+			numTurns++;
+
+		System.out.println("Number of turns this round is: " + numTurns);
+	
 	int choice;
 	Scanner kb = new Scanner(System.in);
 
