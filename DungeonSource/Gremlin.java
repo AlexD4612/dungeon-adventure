@@ -26,11 +26,4 @@ public class Gremlin extends Monster
 
 	}
 
-	@Override
-	public void specialAttack(DungeonCharacter opponent) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-
 }

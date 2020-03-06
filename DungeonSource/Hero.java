@@ -28,7 +28,7 @@ import java.util.Scanner;
  */
 
 
-public abstract class Hero extends DungeonCharacter
+public abstract class Hero extends DungeonCharacter implements Attack
 {
 	private double chanceToBlock;
 	private int numTurns;

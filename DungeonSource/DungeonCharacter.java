@@ -32,7 +32,7 @@
  * @version 1.0
  */
 
-public abstract class DungeonCharacter implements Attack
+public abstract class DungeonCharacter 
 {
 
 	private String name;
