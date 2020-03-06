@@ -165,7 +165,7 @@ should be performed.
 
 protected abstract String getSpecialAttack();
 
-public void battleChoices(DungeonCharacter opponent)
+public final void battleChoices(DungeonCharacter opponent)
 {
 	 numTurns = getAttackSpeed()/opponent.getAttackSpeed();
 
