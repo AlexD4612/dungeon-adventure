@@ -31,39 +31,6 @@ public class Warrior extends Hero
 	}
 
 
-
-    public void battleChoices(DungeonCharacter opponent)
-	{
-		int choice;
-
-		super.battleChoices(opponent);
-		Scanner kb = new Scanner(System.in);
-		do
-		{
-		    System.out.println("1. Attack Opponent");
-		    System.out.println("2. Crushing Blow on Opponent");
-		    System.out.print("Choose an option: ");
-		    choice = kb.nextInt();
-
-		    switch (choice)
-		    {
-			    case 1: attack(opponent);
-			        break;
-			    case 2: specialAttack(opponent);
-			        break;
-			    default:
-			        System.out.println("invalid choice!");
-		    }
-
-			setNumTurns(getNumTurns()-1);
-			if (getNumTurns() > 0)
-			    System.out.println("Number of turns remaining is: " + getNumTurns());
-
-		} while(getNumTurns() > 0);
-
-    }
-
-
 	@Override
 	public void specialAttack(DungeonCharacter opponent) 
 	{
@@ -80,6 +47,12 @@ public class Warrior extends Hero
 			System.out.println();
 		}
 		
+	}
+
+
+	@Override
+	protected String getSpecialAttack() {
+		return "Crushing Blow";
 	}
 
 }

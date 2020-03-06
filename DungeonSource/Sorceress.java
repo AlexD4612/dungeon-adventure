@@ -25,6 +25,7 @@ public class Sorceress extends Hero
     }
 
 
+
 	public void attack(DungeonCharacter opponent)
 	{
 		System.out.println(getName() + " casts a spell of fireball at " +
@@ -51,7 +52,7 @@ public class Sorceress extends Hero
 
 		    }
 		    else if (choice == 2 ) {
-		    	increaseHitPoints();
+		    	specialAttack(opponent);
 		    }
 		    else {
 		    	System.out.println("invalid choice!");
@@ -79,4 +80,9 @@ public class Sorceress extends Hero
 		
 	}
 
+
+	@Override
+	protected String getSpecialAttack() {
+		return "Increase Hitpoints";
+	}
 }

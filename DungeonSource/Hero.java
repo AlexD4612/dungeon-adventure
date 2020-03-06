@@ -154,26 +154,45 @@ public void subtractHitPoints(int hitPoints)
 	}
 
 /*-------------------------------------------------------
-battleChoices will be overridden in derived classes.  It computes the
-number of turns a hero will get per round based on the opponent that is
-being fought.  The number of turns is reported to the user.  This stuff might
-go better in another method that is invoked from this one...
-
-Receives: opponent
-Returns: nothing
-
-This method calls: getAttackSpeed()
-This method is called by: external sources
+battleChoices is a Template method that delegates to
+subclasses about what attacks they should do. getSpecialAttack()
+return the name of the special attack. attack(opponent) 
+prints out the attack then asks the super class for
+calculations. specialAttack(opponent) delegates to 
+subclasses what the special attack is and how it
+should be performed.
 ---------------------------------------------------------*/
-	public void battleChoices(DungeonCharacter opponent)
+
+protected abstract String getSpecialAttack();
+
+public void battleChoices(DungeonCharacter opponent)
+{
+	int choice;
+	Scanner kb = new Scanner(System.in);
+
+	do
 	{
-	    setNumTurns(getAttackSpeed()/opponent.getAttackSpeed());
+	    System.out.println("1. Attack Opponent");
+	    System.out.println("2. " + getSpecialAttack());
+	    System.out.print("Choose an option: ");
+	    choice = kb.nextInt();
+	    
+	    if(choice == 1) {
+	    	attack(opponent);
 
-		if (getNumTurns() == 0)
-			setNumTurns(getNumTurns()+1);
+	    }
+	    else if (choice == 2 ) {
+	    	specialAttack(opponent);
+	    }
+	    else {
+	    	System.out.println("invalid choice!");
+	    }
+	   
+		setNumTurns(getNumTurns()-1);
+	    if (getNumTurns()> 0)
+		    System.out.println("Number of turns remaining is: " + getNumTurns());
 
-		System.out.println("Number of turns this round is: " + numTurns);
+	} while(getNumTurns() > 0 && getHitPoints() > 0 && opponent.getHitPoints() > 0);
 
-	}
-
+}
 }
