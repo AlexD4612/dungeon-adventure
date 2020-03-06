@@ -51,7 +51,7 @@ public class Sorceress extends Hero
 
 		    }
 		    else if (choice == 2 ) {
-		    	increaseHitPoints();
+		    	specialAttack(opponent);
 		    }
 		    else {
 		    	System.out.println("invalid choice!");
