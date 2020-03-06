@@ -20,26 +20,6 @@ public class Thief extends Hero
 
     }
 
-	public void surpriseAttack(DungeonCharacter opponent)
-	{
-		double surprise = Math.random();
-		if (surprise <= .4)
-		{
-			System.out.println("Surprise attack was successful!\n" +
-								getName() + " gets an additional turn.");
-			setNumTurns(getNumTurns()+1);
-			attack(opponent);
-		}
-		else if (surprise >= .9)
-		{
-			System.out.println("Uh oh! " + opponent.getName() + " saw you and" +
-								" blocked your attack!");
-		}
-		else
-		    attack(opponent);
-
-	}
-
 
     public void battleChoices(DungeonCharacter opponent)
 	{
@@ -59,7 +39,7 @@ public class Thief extends Hero
 		    {
 			    case 1: attack(opponent);
 			        break;
-			    case 2: surpriseAttack(opponent);
+			    case 2: specialAttack(opponent);
 			        break;
 			    default:
 			        System.out.println("invalid choice!");
@@ -72,4 +52,24 @@ public class Thief extends Hero
 		} while(getNumTurns() > 0);
 
     }
+
+	@Override
+	public void specialAttack(DungeonCharacter opponent)
+	{	
+		double surprise = Math.random();
+		if (surprise <= .4)
+		{
+			System.out.println("Surprise attack was successful!\n" +
+								getName() + " gets an additional turn.");
+			setNumTurns(getNumTurns()+1);
+			attack(opponent);
+		}
+		else if (surprise >= .9)
+		{
+			System.out.println("Uh oh! " + opponent.getName() + " saw you and" +
+								" blocked your attack!");
+		}
+		else
+		    attack(opponent);
+	}
 }

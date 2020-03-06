@@ -25,6 +25,12 @@ public class Gremlin extends Monster
 		super.attack(opponent);
 
 	}
+
+	@Override
+	public void specialAttack(DungeonCharacter opponent) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }
