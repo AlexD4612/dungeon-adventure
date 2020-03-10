@@ -57,9 +57,9 @@ public class Dungeon
 					   "3. Thief");
 			int random = (int)(Math.random() * 3) + 1;
 		    Hero theHero = new HeroFactory().createHero(kb.nextInt());
-		    Monster theMonster =  new MonsterFactory().createMonster(random);
-			battle(theHero, theMonster);
-
+			Room[][] dung = {{new Room("I"),new Room("M"), new Room("P")},
+							 {new Room("p"), new Room("H"),new Room("O")}};
+			Hero.play(dung,theHero);
 		} while (playAgain());
 		kb.close();
 	}

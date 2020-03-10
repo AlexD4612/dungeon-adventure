@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.lang.Math; 
+
 
 /**
  * Title: Hero.java
@@ -32,6 +34,7 @@ public abstract class Hero extends DungeonCharacter
 {
 	private double chanceToBlock;
 	private int numTurns;
+	private int healingPotion;
 
 //-----------------------------------------------------------------
 //calls base constructor and gets name of hero from user
@@ -153,6 +156,13 @@ public void subtractHitPoints(int hitPoints)
 
 	}
 
+	public static void useHealPotion(Hero Hero) {
+			double randomDouble = Math.random();
+			randomDouble = randomDouble * 15 + 1;
+			int randomInt = (int) randomDouble;
+			Hero.addHitPoints(randomInt);
+		}
+
 /*-------------------------------------------------------
 battleChoices is a Template method that delegates to
 subclasses about what attacks they should do. getSpecialAttack()
@@ -202,4 +212,66 @@ public final void battleChoices(DungeonCharacter opponent)
 		} while(getNumTurns() > 0 && getHitPoints() > 0 && opponent.getHitPoints() > 0);
 	
 	}
+
+public static void play(Room[][] dung,Hero theHero) {
+	Scanner kb = new Scanner(System.in);
+	int i = 0;
+	int j = 0;
+	Room room = dung[i][j];
+	System.out.println("you awaken in the dungeon");
+	while(theHero.isAlive()) {
+		System.out.print(room+"\n");
+		checkKey(room,theHero);
+		System.out.println("1. Use potion\n2. Move");
+		int choice =kb.nextInt();
+		if(choice ==1) useHealPotion(theHero);
+		else { 
+			System.out.println("Choose a direction using W-A-S-D keys");
+			String move = kb.next();
+		if(move.equals("d")) {
+			j++;
+			room = dung[i][j];
+		}
+		else if(move.equals("a")) {
+			if(j!=0) {
+				j--;
+				room = dung[i][j];
+			}
+			else {
+				System.out.print("Can't go further left\n");
+			}
+		}
+		}
+			
+	}
+	System.out.println("Game over");
+	
+}
+
+
+public static void checkKey(Room room, Hero theHero) {
+	int random = (int)(Math.random() * 3) + 1;
+	Monster theMonster =  new MonsterFactory().createMonster(random);
+	if(room.key.equals("I")) {
+		System.out.println("You are at the entrance of the dungeon");
+	}
+	else if(room.key.equals("M")) {
+		System.out.println("You encountered a monster!");
+		Dungeon.battle(theHero,theMonster);
+		room.key="E";
+	}
+	else if(room.key.equals("P")) {
+		System.out.println("You fell in a pit!");
+		pit(theHero);
+	}
+	
+	else if (room.key.equals("H")) {
+		System.out.println("You found a healing potion");
+	}
+}
+
+public static void pit(Hero theHero) {
+	int random = (int)(Math.random()*15)+1;
+	theHero.subtractHitPoints(2);
+}
 }
